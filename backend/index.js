@@ -10,22 +10,12 @@ const app = express()
 
 //cors 
 
-const allowedOrigins = [
-    "https://localhost:3000",
-
-]
-
 app.use(cors({
 
-    origin:function(origin,callback){
-        if(allowedOrigins.indexOf(origin)!== -1 || !origin){
-            callback(null,true);
-        }
-        else{
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials:true,
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
 }))
 
 //middleware to access request body
